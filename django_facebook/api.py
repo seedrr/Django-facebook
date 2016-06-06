@@ -1,4 +1,9 @@
-from django.core.exceptions import ValidationError
+try:
+    # Django versions >= 1.9
+    from django.utils.module_loading import import_module
+except ImportError:
+    # Django versions < 1.9
+    from django.utils.importlib import import_module
 
 from django_facebook import settings as facebook_settings, signals
 from django_facebook.exceptions import FacebookException
